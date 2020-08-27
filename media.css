@@ -1,0 +1,72 @@
+@media screen and (max-width: 1280px) {
+  
+  .header .logo img {
+    max-width: 240px;
+  }
+
+  .header .phone {
+    font-size: 1.25rem;
+    letter-spacing: 1px
+  }
+
+  .header .callme, .header .profile {
+    padding: 10px 20px;
+  }
+
+}
+
+@media screen and (max-width: 1023px) {
+
+  .header .row {
+    text-align: center;
+    padding: 15px 0 0;
+  }
+
+  .header .col {
+    display: block;
+    padding-bottom: 15px;
+  }
+
+  .services .transfer, .services .wedding, .services .corporate, .services .business {
+    width: 100%;
+  }
+
+  .top {
+    min-height: 360px;
+    background-position: center;
+  }
+
+  .footer {
+    padding-top: 30px;
+  }
+
+  .footer .row {
+    text-align: center;
+  }
+
+  .footer .col {
+    display: block;
+    padding-bottom: 20px;
+  }
+
+  .footer .submenu li {
+    padding-left: 30px;
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+
+  .menu .row {
+    padding: 15px;
+  }
+
+  .menu a {
+    font-size: 1.05rem;
+  }
+
+  .slogan {
+    font-size: 1.75rem;
+  }
+
+}
