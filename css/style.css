@@ -17,22 +17,6 @@ p {
   margin-block-end: 0;
 }
 
-.row {
-  text-align: justify;
-  font-size: 0;
-}
-
-.row::after {
-  content: '';
-  display: inline-block;
-  width: 100%;
-}
-
-.col {
-  display: inline-block;
-  vertical-align: middle;
-}
-
 #wrapper {
   width: 100%;
   min-width: 360px;
@@ -45,11 +29,20 @@ p {
   margin: 0 auto;
 }
 
-.header .userbar ul {
-  padding: 35px 0;
+.header .userbar > ul {
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header .logo,
+.header .img {
+  display: block;
+}
+
+.header .logo {
+  padding: 10px;
 }
 
 .header .group ul {
@@ -74,15 +67,16 @@ p {
   border-radius: 18px;
   color: #646464;
   border: 1px solid #646464;
-  transition-property: color, border, background-color;
+  transition: 0.3s ease 0s;
+  transition-property: color, background-color;
 }
 
 .header .callme {
-  padding: 10px 35px;
+  padding: 8px 35px;
 }
 
 .header .profile {
-  padding: 10px 45px;
+  padding: 8px 45px;
 }
 
 .header .callme:hover,
@@ -92,7 +86,6 @@ p {
   background-color: #7E81BB;
   color: #FFFFFF;
   border: 1px solid #7E81BB;
-  transition-property: color, border, background-color;
 }
 
 .header .search {
@@ -120,9 +113,10 @@ p {
 
 .subheader .menu a {
   display: block;
-  padding: 12px;
+  padding: 12px 36px;
   font: 500 1.5rem/1.25 'TT Norms', sans-serif;
   color: #FFFFFF;
+  transition: color 0.3s ease 0s;
 }
 
 .subheader .menu .active,
@@ -134,15 +128,39 @@ p {
   color: #7E81BB;
 }
 
-.top {
-  background: #FFFFFF url(../img/header_bg.jpg) center center no-repeat;
+.intro {
+  background: #FFFFFF url(../img/header_bg.jpg) top center no-repeat;
   min-height: 569px;
+  background-size: auto 100%;
+  transition: background-size 3s ease 0s;
+}
+
+.intro::before {
+  content: '';
+  display: block;
+  min-height: 569px;
+  width: 100%;
+  position: absolute;
+  backdrop-filter: blur(5px) brightness(100%);
+  opacity: 0;
+  transition: backdrop-filter,opacity 2s ease 0s;
+}
+
+.scrolled.intro {
+  background-size: auto 105%;
+}
+
+.scrolled.intro::before {
+  opacity: 50%;
+  backdrop-filter: blur(5px) brightness(125%)
 }
 
 .page-title {
   font: 500 3rem/1.25 "TT Norms", sans-serif;
   color: #161616;
   padding: 30px;
+  position: relative;
+  z-index: 1;
 }
 
 .select .page-subtitle {
@@ -157,6 +175,32 @@ p {
   flex-wrap: wrap;
 }
 
+.select .vehicle {
+  position: relative;
+  overflow: hidden;
+}
+
+.select .vehicle::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 300px;
+  backdrop-filter: blur(5px);
+  transform: rotate(10deg);
+}
+
+.select .vehicle.hover::after {
+  margin-left: 120%;
+  transition: margin-left 0.75s ease 0s;
+}
+
+.select .vehicle::after {
+  margin-left: -30%;
+}
+
 .select .model {
   font: 700 1.875rem/1.25 "TT Norms", sans-serif;
   color: #161616;
@@ -169,12 +213,6 @@ p {
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 30px;
-}
-
-.services .service {
-  min-height: 550px;
-  margin: 10px;
-  position: relative;
 }
 
 .services .content {
@@ -198,51 +236,56 @@ p {
   font: 700 1.5rem/1.25 "TT Norms", sans-serif;
   color: #FFFFFF;
   letter-spacing: 1px;
-  background-color: transparent;
-  transition: 0.5s ease 0s;
-  transition-property: background-color, color;
+  background-color: rgba(255,255,255,0.2);
+  backdrop-filter: blur(3px);
+  transition: background-color 0.3s ease 0s;
 }
 
 .services .readmore:hover,
 .services .readmore:focus {
-  background-color: #FFFFFF;
-  transition: 0.5s ease 0s;
-  color: #252525;
-  transition-property: background-color, color;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .services .transfer {
   background: url(../img/service_transfer.jpg) center center no-repeat;
-  background-size: cover;
   flex-grow: 1;
 }
 
 .services .wedding {
   background: url(../img/service_wedding.jpg) center center no-repeat;
-  background-size: cover;
   flex-grow: 2;
   min-width: 60%;
 }
 
 .services .corporate {
   background: url(../img/service_corporative.jpg) center center no-repeat;
-  background-size: cover;
   flex-grow: 2;
   min-width: 60%;
 }
 
 .services .business {
   background: url(../img/service_business.jpg) center center no-repeat;
-  background-size: cover;
   flex-grow: 1;
 }
 
 .services .events {
   background: url(../img/service_events.jpg) center center no-repeat;
-  background-size: cover;
   flex-shrink: 0;
   flex-grow: 1;
   min-width: 60%;
+}
+
+.services .service {
+  min-height: 550px;
+  margin: 10px;
+  position: relative;
+  background-size: auto 100%;
+  transition: background-size 1s ease 0s;
+}
+
+.services .service:hover,
+.services .service:focus {
+  background-size: auto 105%;
 }
 
 .presentation {
@@ -308,13 +351,6 @@ p {
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.7);
 }
 
-.presentation .vehicle .exterior,
-.presentation .vehicle .interior {
-  min-height: 550px;
-  margin: 10px;
-  background-size: cover;
-}
-
 .presentation .vehicle .exterior {
   flex-grow: 1.75;
   min-width: 60%;
@@ -354,6 +390,21 @@ p {
 
 .presentation .starex .interior {
   background: url(../img/vehicle_07.jpg) center center no-repeat;
+}
+
+.presentation .vehicle .exterior,
+.presentation .vehicle .interior {
+  min-height: 550px;
+  margin: 10px;
+  background-size: auto 100%;
+  transition: background-size 1s ease 0s;
+}
+
+.presentation .vehicle .exterior:hover,
+.presentation .vehicle .exterior:focus,
+.presentation .vehicle .interior:hover, 
+.presentation .vehicle .interior:focus {
+  background-size: auto 105%;
 }
 
 .presentation .vehicle .pricing,
@@ -425,6 +476,7 @@ p {
   color: #FFFFFF;
   display: block;
   margin-bottom: 20px;
+  transition: color 0.3s ease 0s;
 }
 
 .footer .submenu a:hover,
@@ -456,21 +508,28 @@ p {
 }
 
 .footer .social li a {
-  background-image: url(../img/icons_social.png);
-  background-repeat: no-repeat;
   display: block;
   height: 32px;
   width: 32px;
+  background-color: #7E81BB;
+  background-size: 70%;
+  clip-path: polygon(5% 27%, 50% 0, 95% 27%, 95% 73%, 50% 100%, 5% 73%);
+  transition: background-color 0.3s ease 0s;
+}
+
+.footer .social li a:hover,
+.footer .social li a:focus {
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .ig a {
-  background-position: 1px 0;
+  background: url(../img/icon_instagram.svg) center center no-repeat;
 }
 
 .vk a {
-  background-position: -40px 0;
+  background: url(../img/icon_vk.svg) center center no-repeat;
 }
 
 .fb a {
-  background-position: -83px 0;
+  background: url(../img/icon_facebook.svg) center center no-repeat;
 }
